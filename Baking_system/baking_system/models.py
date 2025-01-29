@@ -13,9 +13,6 @@ class Authorization:
         self.person = person
 
     def is_login(self, auth_login, auth_password):
-        self.auth_login = auth_login
-        self.auth_password = auth_password
-
         if (self.person.user.get("login") == auth_login and
                 self.person.user.get("pasword") == auth_password):
             print("Аторизация успешна!")
