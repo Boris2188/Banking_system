@@ -12,9 +12,20 @@ class Authorization:
     def __init__(self, person: UserData):
         self.person = person
 
+    def get_login(self):
+        self.login = self.person.user.get("login")
+        return self.login
+
+    def get_password(self):
+        self.password = self.person.user.get("password")
+        return self.password
+
     def is_login(self, auth_login, auth_password):
-        if (self.person.user.get("login") == auth_login and
-                self.person.user.get("pasword") == auth_password):
-            print("Аторизация успешна!")
+        if self.get_login() == auth_login and self.get_password() == auth_password:
+            return True
         else:
-            print("Пользователь не зарегистрирован!")
+            return False
+
+
+class Info:
+    pass
