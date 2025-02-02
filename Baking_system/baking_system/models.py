@@ -1,6 +1,6 @@
 class UserData:
 
-    def __init__(self, login, password):
+    def __init__(self, login=None, password=None):
         self.user = {
             "login": login,
             "pasword": password
@@ -27,5 +27,4 @@ class Authorization:
             return False
 
 
-class Info:
-    pass
+

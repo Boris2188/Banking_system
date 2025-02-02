@@ -8,6 +8,7 @@ class Bill:
 
     def add_score(self, summ: float) -> float:
         self.score += summ
+        self.add_history()
         return self.score
 
     def withdraw_money(self, summ: float) -> float:
