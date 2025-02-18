@@ -2,41 +2,48 @@ from Baking_system.baking_system.view import UserInput
 from Baking_system.baking_system.models import UserData, Authorization
 from Baking_system.baking_system.service import Bill
 
-login = None
-password = None
+
 
 user = UserData()
 view = UserInput()
-bill = Bill(user)
+
 
 def start():
+    login = None
+    password = None
 
     print(view.welcome())
     print(view.start_info())
+
     action = view.action()
 
     while True:
+
         if action == 1:
             user = UserData(view.login(), view.password())
             auth = Authorization(user)
             login = auth.get_login()
             password = auth.get_password()
+            print(f"Пользователь зарегистрирован!\n")
+            print(f"1. Авторизация\n2. Выход\nВыберите действие: 2\n")
             action = view.action()
             continue
         elif action == 2:
-            if view.login() == login and view.password() == password:
-                print("авторизация успешна!!\n")
-                dop_servis()
-                break
+            if view.login() == login:
+                print("Добропожаловать !")
+                dop_servis(user)
+
             else:
                 print("Неверный логин или пароль!")
+                break
 
         else:
             print("досвидания !!!")
             break
 
 
-def dop_servis():
+def dop_servis(user):
+    bill = Bill(user)
 
     print(f"1. Пополнить счет\n2. Вывести средства\n3. Просмотреть баланс\n"
           f"4. Просмотреть историю операций\n5. Выход")
