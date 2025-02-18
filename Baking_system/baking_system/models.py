@@ -7,7 +7,7 @@ class UserData:
         }
 
 
-class Authorization():
+class Authorization:
     def __init__(self, person: UserData):
         self.person = person
 
@@ -17,9 +17,3 @@ class Authorization():
     def get_password(self):
         return self.person.user.get("password")
 
-    def is_login(self, auth_login, auth_password):
-        if (self.get_login() == auth_login and
-                self.get_password() == auth_password):
-            return True
-        else:
-            return False

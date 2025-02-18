@@ -9,7 +9,6 @@ user = UserData()
 view = UserInput()
 bill = Bill(user)
 
-
 def start():
 
     print(view.welcome())
@@ -22,14 +21,15 @@ def start():
             auth = Authorization(user)
             login = auth.get_login()
             password = auth.get_password()
-            print(user.user.get("login"))
             action = view.action()
             continue
         elif action == 2:
-            view.login() == login and view.password() == password
-            print("авторизация успешна!!\n")
-            dop_servis()
-            break
+            if view.login() == login and view.password() == password:
+                print("авторизация успешна!!\n")
+                dop_servis()
+                break
+            else:
+                print("Неверный логин или пароль!")
 
         else:
             print("досвидания !!!")
@@ -60,3 +60,6 @@ def dop_servis():
         elif action == 4:
             c = bill.history
             print(c)
+
+        else:
+            print("Досвидания!!!")
