@@ -3,7 +3,7 @@ class UserData:
     def __init__(self, login=None, password=None):
         self.user = {
             "login": login,
-            "pasword": password
+            "password": password
         }
 
 

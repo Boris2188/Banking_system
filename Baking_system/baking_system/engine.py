@@ -15,22 +15,19 @@ def start():
     print(view.welcome())
     print(view.start_info())
 
-    action = view.action()
-
     while True:
-
-        if action == 1:
+        action = view.action()
+        if login is None and action == 1:
             user = UserData(view.login(), view.password())
             auth = Authorization(user)
             login = auth.get_login()
             password = auth.get_password()
             print(f"Пользователь зарегистрирован!\n")
-            print(f"1. Авторизация\n2. Выход\nВыберите действие: 2\n")
-            action = view.action()
+            print(f"1. Авторизация\n2. Выход\nВыберите действие: 1\n")
             continue
-        elif action == 2:
-            if view.login() == login:
-                print("Добропожаловать !")
+        elif login is not None and action == 1:
+            if view.login() == login and view.password() == password:
+                print("Добропожаловать !\n")
                 dop_servis(user)
 
             else:
